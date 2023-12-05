@@ -1,0 +1,39 @@
+---
+title: "Obesity-vs.-fast-food-restaurants-by-state"
+output: html_document
+date: "2023-12-05"
+---
+
+```{r}
+library(tidyverse)
+fastFoodRestaurants <- read_delim("C:/Users/amylu/Downloads/Fast_Food_Restaurants_US.csv")
+
+obesityByState <- read_delim("C:/Users/amylu/Downloads/obesity_by_state.csv")
+```
+
+## Data cleaning & pre-processing
+
+Adding a new categorical variable, whether restaurant is in North or South of the US: 
+
+```{r}
+fastFoodRestaurants <- fastFoodRestaurants %>% 
+  mutate(
+    north = ifelse(latitude >= 37.5 & latitude <= 50, TRUE, FALSE),
+    south = ifelse(latitude >= 25 & latitude < 37.65, TRUE, FALSE)
+  )
+fastFoodRestaurants
+```
+
+We already added a new continuous/numerical variable by modifying the dataset itself (calculated the average weight by state (in lbs))
+
+
+One summarization of data frame, amount of fast food restaurants by city: 
+
+```{r}
+summary <- fastFoodRestaurants %>%
+  group_by(city) %>%
+  summarise(count = n())
+summary
+```
+
+
