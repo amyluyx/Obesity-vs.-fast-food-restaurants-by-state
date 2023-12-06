@@ -6,9 +6,12 @@ date: "2023-12-05"
 
 ```{r}
 library(tidyverse)
-fastFoodRestaurants <- read_delim("C:/Users/amylu/Downloads/Fast_Food_Restaurants_US.csv")
+fastFoodRestaurants <- read_delim("C:/Users/amylu/Downloads/Fast_Food_Restaurants_US - Fast_Food_Restaurants_US.csv")
+spec(fastFoodRestaurants)
 
 obesityByState <- read_delim("C:/Users/amylu/Downloads/obesity_by_state.csv")
+obesityByState$state = obesityByState$State # prepping data for merge
+spec(obesityByState)
 ```
 
 ## Data cleaning & pre-processing
@@ -37,3 +40,21 @@ summary
 ```
 
 
+## Data joining
+
+We are now joining the fastFoodRestaurants dataset and the obesityByState dataset by the state variable. This will enable us to analyze whether obesity rates and the number of fast food restaurants have a correlation and analyze this correlation.
+
+```{r}
+joint <- merge(fastFoodRestaurants, obesityByState, by='state', all=TRUE) # merging the two big datasets
+head(joint, 10)
+colnames(joint)
+```
+
+
+Amys Ideas for graphs/plots: 
+
+1. sort the two datasets in ascending order (in terms of obesity rate for obesityByState and number of fast food restaurants for summary dataset) and plot a graph of obesity rate (from obesityByState) vs. number of fast food restaurants per state (from summary dataset)
+
+2. sort the two datasets in ascending order (in terms of obesity rate for obesityByState and number of fast food restaurants for fastFoodRestaurants datasets) and plot the two datasets as 2 lines on a graph, with x axis being state and y axis being number of restaurants
+
+3. the other graphs/plot ideas we had in the doc somewhere; do something with the joint dataset "joint"
