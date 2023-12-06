@@ -58,3 +58,29 @@ Amys Ideas for graphs/plots:
 2. sort the two datasets in ascending order (in terms of obesity rate for obesityByState and number of fast food restaurants for fastFoodRestaurants datasets) and plot the two datasets as 2 lines on a graph, with x axis being state and y axis being number of restaurants
 
 3. the other graphs/plot ideas we had in the doc somewhere; do something with the joint dataset "joint"
+
+##### Does the diabetes percentage per state correlate with the obesity rate per state?
+```{r}
+library(ggplot2)
+
+joint$`Diabetes Percentage` <- as.numeric(joint$`Diabetes Percentage`)
+joint$`Obesity ` <- as.numeric(joint$`Obesity `)
+
+ggplot(joint, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
+  geom_point() +
+  labs(title = "Diabetes Percentage vs. Obesity Rate by State",
+       x = "Diabetes Percentage",
+       y = "Obesity Rate") +
+  theme_minimal()
+
+```
+##### (with smoothed lines)
+```{r}
+ggplot(joint, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Diabetes Percentage vs. Obesity Rate by State",
+       x = "Diabetes Percentage",
+       y = "Obesity Rate") +
+  theme_minimal()
+```
