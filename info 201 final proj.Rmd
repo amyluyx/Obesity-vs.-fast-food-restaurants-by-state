@@ -27,6 +27,20 @@ fastFoodRestaurants <- fastFoodRestaurants %>%
 fastFoodRestaurants
 ```
 
+#### Is there a correlation between state level rates of obesity and latitude?
+#### Blue points are considered North USA, Red points are considered South USA
+#### The y axis represents obesity rates per 100,000 people, or the prevalence of obesity in each state
+#### Each point on the graph represents a state
+```{r}
+colors <- ifelse(joint$latitude <= 37.5, "red", "blue")
+
+plot(joint$latitude, joint$`Obesity per 100k`, 
+     xlab = "Latitude",
+     ylab = "Obesity per 100k",
+     main = "Correlation Between Obesity and Latitude",
+     col = colors)
+```
+
 We already added a new continuous/numerical variable by modifying the dataset itself (calculated the average weight by state (in lbs))
 
 
