@@ -63,9 +63,6 @@ Amys Ideas for graphs/plots:
 ```{r}
 library(ggplot2)
 
-joint$`Diabetes Percentage` <- as.numeric(joint$`Diabetes Percentage`)
-joint$`Obesity ` <- as.numeric(joint$`Obesity `)
-
 ggplot(joint, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
   geom_point() +
   labs(title = "Diabetes Percentage vs. Obesity Rate by State",
