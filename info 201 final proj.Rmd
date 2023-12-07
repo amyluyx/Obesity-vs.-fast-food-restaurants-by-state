@@ -95,3 +95,16 @@ plot(joint$latitude, joint$`Obesity per 100k`,
      main = "Correlation Between Obesity and Latitude",
      col = colors)
 ```
+#### Data correlation between Average Weight vs Obesity rate per state
+```{r}
+library(ggplot2)
+
+ggplot(obesity, aes(x = `Average Weight`, y = `Obesity`)) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Average Weight vs. Obesity Rate by State",
+       x = "Average Weight",
+       y = "Obesity Rate") +
+  theme_minimal()
+
+```
