@@ -99,7 +99,7 @@ plot(joint$latitude, joint$`Obesity per 100k`,
 ```{r}
 library(ggplot2)
 
-ggplot(obesity, aes(x = `Average Weight`, y = `Obesity`)) +
+ggplot(obesityByState, aes(x = `Average Weight`, y = `Obesity`)) +
   geom_point() +
   geom_smooth() +
   labs(title = "Average Weight vs. Obesity Rate by State",
