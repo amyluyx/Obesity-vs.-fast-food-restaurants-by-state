@@ -1,0 +1,23 @@
+---
+title: "Final Cleaned Dataset"
+author: "Ridhi Kakar, Mina Wang, Sophie Cho, Amy Lu"
+date: "2023-12-08"
+output: html_document
+---
+```{r}
+library(tidyverse)
+
+fastFoodRestaurants <- read_delim("../../Documents/INFO 201/Fast_Food_Restaurants_US - Fast_Food_Restaurants_US.csv") 
+
+obesityByState <- read_delim("../../Documents/INFO 201/obesity_by_state - obesity_by_state.csv")
+obesityByState$state = obesityByState$State # prepping data for merge
+
+fastFoodRestaurants <- fastFoodRestaurants %>% 
+  mutate(
+    north = ifelse(latitude >= 37.5 & latitude <= 50, TRUE, FALSE),
+    south = ifelse(latitude >= 25 & latitude < 37.65, TRUE, FALSE)
+  )
+
+fastFoodRestaurants
+```
+
