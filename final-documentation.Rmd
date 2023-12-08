@@ -1,0 +1,68 @@
+---
+title: "final documentation"
+output: html_document
+date: "2023-12-08"
+---
+
+&nbsp;
+
+<font size="4">  **Source of data files** </font>
+
+- https://wisevoter.com/state-rankings/obesity-rate-by-state/
+
+- https://www.kaggle.com/datasets/khushishahh/fast-food-restaurants-across-us
+
+- https://www.cdc.gov/obesity/data/prevalence-maps.html
+
+&nbsp;
+
+<font size="4">  **Calculations** </font>
+
+To sort our data, we chose to create the columns north and south. To do this, we had to calculate the latitude of each region. We know that 25 latitude is the most southern tip, while 50 is the most northern tip, so we were able to calculate the mid point of the latitude in the U.S.
+
+(50+25)/2 = 37.5
+
+&nbsp;
+
+
+<font size="4">  **Explanation of all variables** </font>
+
+**First dataset: fastFoodRestaurants**
+	
+- categories(fast food restaurant/ fast food/American Restaurant)	
+
+- city(which city)
+
+- country(United States)
+
+- latitude(tells us exact location)
+
+- longitude(tells us exact location)
+
+- name(which fast food restaurant)
+
+- state(tells location)
+
+- north(anything from 37.5-50 latitude)
+
+- south (anything from 25-37.5 latitude)
+
+
+**Second Dataset: obesityByState**
+
+- State(location)
+
+- Obesity(rate of obese people per 100,000 people in each state)
+
+- Average Weight(in lbs for each state)
+
+- Diabetes Percentage(How common diabetes is per state)
+
+
+**Basic summary statistics: **
+
+- number of rows, column, and number of missing/otherwise invalid values by each column
+
+- Obesity by state csv: 51 rows, 5, columns, 1 missing data point for DC average weight
+
+- Fast food restaurants US csv: 10000 rows, 11 columns, no missing data!
