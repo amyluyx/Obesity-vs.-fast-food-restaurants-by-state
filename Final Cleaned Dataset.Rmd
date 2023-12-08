@@ -18,6 +18,8 @@ fastFoodRestaurants <- fastFoodRestaurants %>%
     south = ifelse(latitude >= 25 & latitude < 37.65, TRUE, FALSE)
   )
 
-fastFoodRestaurants
+joint <- merge(fastFoodRestaurants, obesityByState, by='state', all=TRUE) # merging the two big datasets
+head(joint, 10)
+colnames(joint)
 ```
 
