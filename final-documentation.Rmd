@@ -33,6 +33,8 @@ To sort our data, we chose to create the columns north and south. To do this, we
 
 - city(which city)
 
+-count(# of fast food restaurants per state)
+
 - country(United States)
 
 - latitude(tells us exact location)
