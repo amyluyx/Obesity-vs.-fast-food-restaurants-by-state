@@ -4,6 +4,8 @@
 The Github readme file should contain a 1/2-1 page summary of your work.
 It should: 
 - contain one figure that you have computed and created from data
+- ![image](https://github.com/amyluyx/Obesity-vs.-fast-food-restaurants-by-state/assets/102154596/53b538d1-93be-4abd-927d-d7f243ccca26)
+
 - tell who is the target audience of your story
 
   According to the CDC, nearly 42% of the adult population is classified as obese and around a third of Americans are said to be consuming fast food on any given day. Due to such statistics, it is imperative to understand the context, significance, and potential implications of these statistics in order to better examine potential connections and contributing factors. This led to the development of this project’s objective, targeting the population who consume fast foods in the United States.
