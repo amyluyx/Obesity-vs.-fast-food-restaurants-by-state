@@ -6,10 +6,10 @@ date: "2023-12-05"
 
 ```{r}
 library(tidyverse)
-fastFoodRestaurants <- read_delim("C:/Users/amylu/Downloads/Fast_Food_Restaurants_US - Fast_Food_Restaurants_US.csv")
+fastFoodRestaurants <- read_delim("../../fastfood.csv")
 spec(fastFoodRestaurants)
 
-obesityByState <- read_delim("C:/Users/amylu/Downloads/obesity_by_state.csv")
+obesityByState <- read_delim("../../obesity_by_state.csv")
 obesityByState$state = obesityByState$State # prepping data for merge
 spec(obesityByState)
 ```
@@ -34,11 +34,10 @@ One summarization of data frame, amount of fast food restaurants by city:
 
 ```{r}
 summary <- fastFoodRestaurants %>%
-  group_by(city) %>%
+  group_by(state) %>%
   summarise(count = n())
 summary
 ```
-
 
 ## Data joining
 
@@ -50,30 +49,25 @@ head(joint, 10)
 colnames(joint)
 ```
 
+```{r}
+merged_df <- merge(summary, obesityByState, by = "state")
+merged_df
+```
 
-Amys Ideas for graphs/plots: 
-
-1. sort the two datasets in ascending order (in terms of obesity rate for obesityByState and number of fast food restaurants for summary dataset) and plot a graph of obesity rate (from obesityByState) vs. number of fast food restaurants per state (from summary dataset)
-
-2. sort the two datasets in ascending order (in terms of obesity rate for obesityByState and number of fast food restaurants for fastFoodRestaurants datasets) and plot the two datasets as 2 lines on a graph, with x axis being state and y axis being number of restaurants
-
-3. the other graphs/plot ideas we had in the doc somewhere; do something with the joint dataset "joint"
+##### number of fast food restaurants vs obesity rate
+```{r}
+library(ggplot2)
+ggplot(data = merged_df) +
+  geom_point(aes(x = `Obesity `, y = count)) +
+  labs(x = "Obesity", y = "Count") +
+  ggtitle("Scatterplot of Count vs Obesity") +
+  theme_minimal()
+```
 
 ##### Does the diabetes percentage per state correlate with the obesity rate per state?
 ```{r}
 library(ggplot2)
-
-ggplot(joint, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
-  geom_point() +
-  labs(title = "Diabetes Percentage vs. Obesity Rate by State",
-       x = "Diabetes Percentage",
-       y = "Obesity Rate") +
-  theme_minimal()
-
-```
-##### (with smoothed lines)
-```{r}
-ggplot(joint, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
+ggplot(merged_df, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
   geom_point() +
   geom_smooth() +
   labs(title = "Diabetes Percentage vs. Obesity Rate by State",
@@ -81,6 +75,7 @@ ggplot(joint, aes(x = `Diabetes Percentage`, y = `Obesity `)) +
        y = "Obesity Rate") +
   theme_minimal()
 ```
+
 #### Is there a correlation between state level rates of obesity and latitude?
 
 #### Blue points are considered North USA, Red points are considered South USA
@@ -108,3 +103,4 @@ ggplot(obesityByState, aes(x = `Average Weight`, y = `Obesity`)) +
   theme_minimal()
 
 ```
+As we can see above, the data points are scattered but overall they seem to have a correlation. As every state's average weight increases, so does the obesity rate of the state. We know this because of the linear upturned line demonstrating a upward trend between the two variables. 
