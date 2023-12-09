@@ -1,0 +1,114 @@
+---
+title: "Final Report"
+output: html_document
+date: "2023-12-09"
+---
+
+```{r}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+Sophie Cho, Ridhi Kakar, Amy Lu, Mina Wang
+
+INFO 201
+
+Ott Toomet
+
+December 3rd, 2023
+
+# Final Report - Analyzing Obesity Rates in the U.S.
+
+In this deliverable, we will be studying the correlation between state obesity rates and the density of fast food restaurants. This relationship is interesting due to its profound implications for public health and the dynamics between dietary habits and health outcomes, which can offer insights into the various eating habits of states within the U.S. and how they relate to the fast food industry. With around a third of Americans consuming fast food on any given day, it is imperative to understand the context, significance, and potential implications of these statistics.  
+
+Studying the correlation between state obesity rates and the density of fast food restaurants is crucial for public health. With nearly 42% of the adult population classified as obese, according to the Centers for Disease Control and Prevention (CDC), or having a BMI over 30, this high rate prompts us to examine potential connections and contributing factors. Our deliverable strives to provide insights into lifestyle factors contributing to obesity. Understanding regional variations curates targeted strategies, which may influence resource allocation based on prevalent health issues. This research may influence policies to promote healthier food options, exercise, and awareness. It addresses the complex intersection of environmental, social, and individual factors, which can contribute to an approach to combating obesity in the U.S. The findings associated with our report hold potential for shaping the future of fast food and fostering healthier community environments. 
+
+What we aim to answer with this deliverable includes:
+- Is there a statistically significant correlation between the density of fast-food restaurants and state-level obesity rates in the U.S.?
+- Is there a correlation between state level rates of obesity and latitude?
+- Does the diabetes percentage per state correlate with the obesity rate per state?
+- Does the average weight per state correlate with the obesity rate per state? 
+
+Understanding the correlation between state obesity rates and fast-food restaurant density relates to implications for public health policy, urban planning, and the overall well-being of communities. By analyzing our datasets, our report aims to provide insights that can inform targeted interventions, encourage healthier lifestyle choices, and contribute to mitigating the high obesity rate in the United States.
+
+These specific datasets are used because they both are able to provide information that is relevant to the study’s focus on the correlation between state obesity rates and the density of fast food restaurants. The “Obesity Rate by State” dataset provides crucial data regarding the prevalence of obesity across the various states in America. Categories such as obesity (per 100k), average weight, and diabetes prevalence are all covered, which also serve as a primary metric for better understanding how serious the health issues are in each state. The “Fast Food Restaurants across US” dataset provides data on the geographic location of fast food restaurants in the nation. Categories include city, country, geographic coordinates (latitude/longitude), name, etc. This dataset will also help evaluate the accessibility of fast food restaurants in each area. Merging these two datasets will help assess the relation between the density of fast food restaurants and obesity rates.
+
+The “Obesity Rate by State 2023” dataset comes from wisevoter.com. This website, founded by Ben Kaplan, aims to gather and offer health data. However, the precise data collector is not stated clearly. On the other hand, The “Fast Food Restaurants Across US'' dataset was acquired on kaggle.com, which Khushi Shahh obtained from Datafiniti’s Business Database. 
+
+Both data are publicly accessible for investigative and research purposes. With the “Fast Food Restaurants Across US” dataset, users are able to rank cities based on the number of fast food restaurants. With the “Obesity Rate by State 2023” dataset, users are able to address the challenges with obesity and come up with solutions regarding the issue.
+“Fast Food Restaurants Across US” is about 10,000 fast food establishments and their respective address, city, province, latitude/longitude coordinates, and name. The population is represented by the fast food restaurants that are located in numerous cities based in America. “Obesity Rate by State 2023” is about obesity rates in the US based on the state. It categorizes the population by state, which helps provide insight into obesity rates and its prevalence.
+
+There were, however, some issues that were encountered with the data. There was a missing value in the dataset, which presented a data quality issue when analyzing. Another problem was that the dataset included data that was in both numerical and textual format. This makes it more complex when merging the two datasets. In order to fix this problem, the numerical data was selected while ignoring the textual data. This helped smooth the merging process. 
+
+The merged dataset ‘joint’ is a combination of two separate datasets, where each row is a representation of a specific fast food restaurant located in different states in the United States. By analyzing each row, users are able to have a more in-depth understanding of state obesity rates and the density of fast food restaurants. 
+
+In this combined dataset, there are a total of 49 observations, which all represent a state in the United States. And, from each observation, information related to the state is given such as the geographic coordinates (latitude and longitude), obesity rate, and diabetes prevalence. Each row, therefore, is a source for enhancing the understanding of the public health outcome within the US.
+
+Some important and relevant variables found in the merged data are the state, city, country, latitude, obesity, average weight, and diabetes percentage. There were also new columns created—North and South. If located north of the middle latitude, which is from 37.5-50 latitude, north would come out as TRUE; if not, so 25-37.5 latitude, then FALSE. This was made possible by utilizing the if-else statements (if north of America: North = TRUE, South = FALSE; if south of America: North = FALSE, South = TRUE). Another new column created was the variable ‘count’. This variable represents the number of restaurants per state. This was created by using the merge() function to merge the summary data frame and obesityByState data frame. 
+
+However, despite the countless amounts of data in the merged set, there are issues within the quality of the dataset. There are ambiguities in the column names such as ‘north’ and ‘south’. This will only lead to confusions about what the column/variables actually mean (north/south of what exactly?). In addition, there is a code quality issue with the column ‘Obesity ‘. This variable includes an extra space at the end, which makes it a lot more difficult for programmers to have a more seamless programming experience. These two specific discrepancies must be looked over in order to provide the user and programmer with a more coherent interpretation and insight into this dataset. 
+
+With the datasets we chose, we got the chance to work with many variables. Of our first dataset, the Fast Food Restaurants in the United States, we started out with nine variables, but after removing the address of every restaurant and the postal codes of every restaurant, we were left with seven original variables. We kept the category of restaurant to let users know the most seen types of restaurants, city for location purposes, the country to keep users aware this is only in the United States, the latitude as well as the longitude for location purposes, the name of the restaurant to let users know what is most popular among the states, and the province (state) which allows us many benefits. We are able to allow users more identification with where each restaurant is as well as use this as a shared variable between graphs to relate this to our Obesity by State graph. This graph had only a few variables to start with so we made the decision to keep them all. These variables are the rate of obese people in 100k people for every state to teach users how bad obesity is in various states, the percentage of people with diabetes in each state to give users an idea of how bad it is getting for society’s health, and the states to let users know which state the row of data is referring to.
+
+
+After cutting down and making the final decision on our datasets, we ended up deciding it was necessary to add variables to our datasets. To our first dataset, the Locations of Every Major Fast Food Restaurant in the United States, we chose to add a variable which stated whether a restaurant was in the northern half of America or the southern half. We chose to add this variable because it allows users more insight into the possible correlation between where the majority of obesity in American citizens lies as well as where these major fast food chains are placed. We also added a variable named count which states the number of fast food restaurants for every state. This is important for both our dataset and later our graph so we can compare the count to the obesity rate for every state. Another variable we added was to our second dataset, Obesity by State, which told the user the average weight of every state. This allows users more insight into how terrible this epidemic has become.
+
+
+Our group decided we wanted to create a dataset which would be beneficial to the society we live in today. Data that would both be interesting to the public as well as provide information that could allow them an understanding of something they may have possibly not have thought of. This would mean finding datasets that were about everyday citizens. We had many ideas of what we could go off of and various graphs we could relate to others. Some ideas were less relevant to our final choice such as the use of technology and the rise of social media while other ideas were more similar such as the number of Mcdonalds in America and the prevalence of diabetes by state. However, after much brainstorming and researching, our group found a dataset about the prevalence of obesity across the United States. Due to our own knowledge of the background of this issue, we decided to find a dataset that would inform on the amount of fast food restaurants as well as their locations. Merging these two datasets becomes beneficial to the public by letting them know a large factor in the obesity outbreak of America as well as knowledge on how bad it is getting. With our datasets we were very fortunate to have no missing values but rather all our values in place. This allowed us the utmost information on the topic at hand as well as no issues with needing to replace any values.
+
+For the first graph, a scatterplot with a curve of best fit, we compare the diabetes percentage vs. obesity rate by state. Here are our results and findings: 
+
+```{r}
+library(magick)
+image1 <- image_read("../../image1.png")
+image1
+```
+
+- Although the data points seem more scattered and variable at the bottom left corner, this is where the obesity rate is low and diabetes percentage is low, which may suggest that there is not as strong of a correlation between diabetes and low stages of obesity. But the fact that the data points converge closer to the top right corner means that there is a stronger correlation between higher obesity rates in a region and diabetes. 
+- As seen by the blue curve of the best fit line, overall, the obesity rate by state directly correlates with the diabetes percentage within each state. This means that the higher the obesity rate in a state, the more likely that the state has a higher diabetes percentage as well. From this, we can infer that people who are obese are also more likely to have diabetes. 
+
+The second graph is a portrayal between obesity and the latitude of the location in which the obesity rate is measured. We split the country into two sections based on the latitude from the northmost point of the United States to the southmost point; the north, which data points are represented in blue, and the south, which data points are represented in red circles.
+
+```{r}
+library(magick)
+image2 <- image_read("../../image2.png")
+image2
+```
+
+- The dataset shows a clear divide between the two regions in terms of obesity rates. Our hypothesis was that the South population has a higher obesity rate than the North of the United States, but we were surprised to find that the Northern obesity rate is, on average, greater than the South. 
+- This could be explained by the higher concentration of fast food restaurants in the North than in the South. With the conclusion that we took from the graph relating fast food restaurants and obesity rate, that more fast food restaurants led to a higher obesity rate, we can infer that a potential representation of the northern population in this data may be skewed by the concentration of people vs. restaurants. Since the dataset does not account for proportional variations of a larger concentration of people balances vs. the same concentration of restaurants, for example, this ratio may vary based on population. This may be the cause for our results indicating that the higher concentration of obese populations are in areas in the south. 
+
+```{r}
+library(magick)
+image3 <- image_read("../../image3.png")
+image3
+```
+
+As we can see above, the data points are scattered but overall they seem to have a correlation. As every state’s average weight increases, so does the obesity rate of the state. We know this because of the linear upturned line demonstrating an upward trend between the two variables. What is interesting here is how the gray shaded region funnels out towards each side of the graph. This is a representation of the distribution of the data points compared to the curve of best fit, and the fact that this spreads out near the ends of the weight distributions indicates that states that represent extrema in terms of average weight vary in terms of the obesity rate. From this, we might infer that within these extrema states are extrema in terms of those who are obese, which means that there are little states that have a vast majority of people within the normal weight range.
+
+Now to answer our final question of how obesity correlates to the number of fast food restaurants in the US: Here is a basic analysis of how the number of fast food restaurants correlates to the obesity rate in a particular region. Each datapoint represents a different region in our 52-point joint dataset. 
+
+```{r}
+library(magick)
+image4 <- image_read("../../image4.png")
+image4
+```
+
+- Obesity rate was expected to be clear upward trend between # of restaurants. However we found out that it's less of an upward trend and depends more on the factor of the geographical area. We found this through analyzing the merged data set, specifically count, obesity, and state variables, the less fast food restaurants, the higher obesity rate. 
+- This is an anomaly because the states with many fast food restaurants are places with common tourist attractions, and these are just outliers, such as California (as shown in the figure below)
+
+```{r}
+library(magick)
+image5 <- image_read("../../image5.png")
+image5
+```
+
+Generally, however, the line follows an upward trend, which indicates that, in most cases, the number of restaurants do directly correspond to the obesity rate. 
+
+Although our data studies the relationship between obesity and various location-based and health-based factors, it is currently limited to one dataset with facets related to obesity. Additionally, we were unable to find consistent, available data that tracked how these factors relating to obesity changed throughout the years. To improve the accuracy of our data, we could dig into archives and examine the change of these factors in relation to obesity trends over time, as well as expand our sample population analysis to people who are categorized as overweight, different stages of overweightness and obesity, as well as compare these patterns of the overweight population to the healthy/average population range. 
+
+Exploring the link between obesity rates and the abundance of fast-food restaurants has implications for public health, city planning, and community well-being. Our report analyzes data to offer insights for targeted interventions, promoting healthier choices and addressing the high obesity rate in the United States. Our data suggests that a crucial proponent of the influx of obesity is the number of fast food restaurants in the state, which in turn impacts diabetes rates. This is especially prevalent in the north of the United States, where the more developed, urbanized cities have a high concentration of fast food restaurants. 
+
+Based on this and the conclusions made earlier from our data, the first step to start improving population health as a whole is to focus on these urbanized areas and places with tourist attractions and advocate for corporate changes in the reduction of fast food consumption, as well as adding additional options for healthier food choices. This would, in turn, promote healthier eating habits and help in achieving lower obesity rates. 
+
+Recognizing the nuanced relationship between obesity, diabetes, and fast-food density emphasizes the need for related intervention in urban areas, presenting an opportunity to reshape dietary habits and foster healthier communities.
