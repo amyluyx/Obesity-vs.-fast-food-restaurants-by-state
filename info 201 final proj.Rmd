@@ -44,7 +44,7 @@ summary
 We are now joining the fastFoodRestaurants dataset and the obesityByState dataset by the state variable. This will enable us to analyze whether obesity rates and the number of fast food restaurants have a correlation and analyze this correlation.
 
 ```{r}
-joint <- merge(x = fastFoodRestaurants, y = obesityByState, by.x='State', by.y = 'state', fill = -9999) # merging the two big datasets
+joint <- merge(x = fastFoodRestaurants, y = obesityByState, by.x='state', by.y = 'state', fill = -9999) # merging the two big datasets
 head(joint, 10)
 colnames(joint)
 ```
