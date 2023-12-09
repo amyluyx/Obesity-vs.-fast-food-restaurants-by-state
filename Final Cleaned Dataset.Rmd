@@ -7,10 +7,13 @@ output: html_document
 ```{r}
 library(tidyverse)
 
-fastFoodRestaurants <- read_delim("../../Documents/INFO 201/Fast_Food_Restaurants_US - Fast_Food_Restaurants_US.csv") 
+library(tidyverse)
+fastFoodRestaurants <- read_delim("../../fastfood.csv")
+spec(fastFoodRestaurants)
 
-obesityByState <- read_delim("../../Documents/INFO 201/obesity_by_state - obesity_by_state.csv")
+obesityByState <- read_delim("../../obesity_by_state.csv")
 obesityByState$state = obesityByState$State # prepping data for merge
+spec(obesityByState)
 
 fastFoodRestaurants <- fastFoodRestaurants %>% 
   mutate(
