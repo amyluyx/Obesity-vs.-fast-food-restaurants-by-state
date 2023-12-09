@@ -22,7 +22,6 @@ fastFoodRestaurants <- fastFoodRestaurants %>%
   )
 
 joint <- merge(x = fastFoodRestaurants, y = obesityByState, by.x='state', by.y = 'state', fill = -9999) # merging the two big datasets
-head(joint, 10)
 colnames(joint)
 
 merged_df <- merge(summary, obesityByState, by = "state")
